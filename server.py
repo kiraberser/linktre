@@ -9,4 +9,4 @@ def home_page():
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))  # Usa el puerto asignado por Railway
-    app.run(host=os.getenv('RAILWAY_URL'), port=port)
+    app.run(host='0.0.0.0', port=port)

@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import os 
 
 app = Flask(__name__)
 
@@ -7,4 +8,5 @@ def home_page():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = 5000  # Usa el puerto asignado por Railway
+    app.run(host='0.0.0.0', port=port)

@@ -122,9 +122,15 @@ footer ul li a:hover {
   color: #aaa;
 }
 
-/* Escalado dinámico */
-@media (min-width: 1px) {
+/* Ajuste de escalado para móviles */
+@media (max-width: 768px) {
   #scalable-container {
-    transform: scale(calc(100vw / 600)); /* Escalado proporcional basado en el ancho de la ventana */
+    transform: scale(0.75); /* Reduce al 75% */
+  }
+}
+
+@media (max-width: 480px) {
+  #scalable-container {
+    transform: scale(0.7); /* Reduce al 70% para pantallas más pequeñas */
   }
 }

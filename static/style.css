@@ -9,30 +9,21 @@
 body {
   background-image: url('./images/isla.png');
   background-position: center;
-  background-size: cover; /* Asegura que cubra todo el fondo */
+  background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-attachment: fixed; /* Hace que el fondo permanezca fijo */
-  overflow: hidden; /* Evita barras de desplazamiento */
+  background-attachment: fixed;
+  transition: background 1.5s ease-in-out; /* Transición de fondo */
 }
 
-/* Contenedor flexible para el escalado */
-#scalable-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  transform-origin: top center; /* Fija el punto de transformación */
-}
-
+/* Wrapper */
 #wrapper {
-  width: 400px; /* Tamaño base original */
-  height: 550px; /* Tamaño base original */
+  width: 90%;
+  max-width: 400px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -41,27 +32,32 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeInScale 1.2s ease forwards; /* Animación de aparición */
 }
 
+/* Header */
 header {
   text-align: center;
-  position: relative;
 }
 
 .bg-img {
-  width: 250px; /* Tamaño original */
-  height: 300px; /* Tamaño original */
-  border-radius: 100%;
+  width: 250px;
+  height: 350px;
+  border-radius: 50%;
   overflow: hidden;
   margin-bottom: 20px;
   background-color: #f1f1f1;
+  transition: transform 0.5s ease; /* Transición para zoom */
 }
+
 
 .bg {
   width: 100%;
   height: 100%;
-  object-position: top;
   object-fit: cover;
+  object-position: top;
 }
 
 header h1 {
@@ -69,15 +65,20 @@ header h1 {
   font-weight: bold;
   color: #333;
   margin-bottom: 5px;
-  padding-top: 10px;
+  transition: color 0.3s ease; /* Transición de color */
+}
+
+header h1:hover {
+  color: #007bff;
 }
 
 header p {
   font-size: 16px;
   color: #777;
-  margin-bottom: 20px;
+  transition: transform 0.3s ease;
 }
 
+/* Social Icons */
 .icons {
   padding-top: 20px;
   display: flex;
@@ -89,48 +90,73 @@ header p {
   font-size: 24px;
   color: #555;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease; /* Transición de color y movimiento */
 }
 
 .icons a:hover {
   color: #007bff;
+  transform: scale(1.2); /* Aumenta el tamaño */
+}
+
+/* Footer */
+#footer {
+  text-align: center;
+  margin-top: 20px;
 }
 
 footer ul {
   display: flex;
   justify-content: center;
   gap: 10px;
-}
-
-footer ul li {
-  font-size: 12px;
-  color: #aaa;
+  list-style: none;
 }
 
 footer ul li a {
-  color: #007bff;
+  font-size: 12px;
+  color: #aaa;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 footer ul li a:hover {
+  color: #555;
   text-decoration: underline;
 }
 
-#footer {
-  text-align: center;
+footer p {
   font-size: 12px;
   color: #aaa;
 }
 
-/* Ajuste de escalado para móviles */
-@media (max-width: 768px) {
-  #scalable-container {
-    transform: scale(0.75); /* Reduce al 75% */
+/* Animaciones */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
+/* Responsive Design */
 @media (max-width: 480px) {
-  #scalable-container {
-    transform: scale(0.7); /* Reduce al 70% para pantallas más pequeñas */
+  .bg-img {
+    width: 200px;
+    height: 300px;
+    transition: transform 0.5s ease; 
+  }
+
+  header h1 {
+    font-size: 20px;
+  }
+
+  header p {
+    font-size: 14px;
+  }
+
+  #wrapper {
+    padding: 15px;
   }
 }

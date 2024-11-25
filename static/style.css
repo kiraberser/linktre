@@ -9,19 +9,30 @@
 body {
   background-image: url('./images/isla.png');
   background-position: center;
-  background-size: cover; /* Se asegura de cubrir todo el fondo */
+  background-size: cover; /* Asegura que cubra todo el fondo */
   background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-attachment: fixed; /* Hace que el fondo se quede fijo */
+  background-attachment: fixed; /* Hace que el fondo permanezca fijo */
+  overflow: hidden; /* Evita barras de desplazamiento */
+}
+
+/* Contenedor flexible para el escalado */
+#scalable-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transform-origin: top center; /* Fija el punto de transformación */
 }
 
 #wrapper {
-  width: 400px; /* Tamaño original */
-  height: 550px; /* Tamaño original */
+  width: 400px; /* Tamaño base original */
+  height: 550px; /* Tamaño base original */
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -67,7 +78,6 @@ header p {
   margin-bottom: 20px;
 }
 
-/* Íconos */
 .icons {
   padding-top: 20px;
   display: flex;
@@ -86,11 +96,6 @@ header p {
   color: #007bff;
 }
 
-.icons a:active {
-  color: #0056b3;
-}
-
-/* Estilos del pie de página */
 footer ul {
   display: flex;
   justify-content: center;
@@ -117,66 +122,9 @@ footer ul li a:hover {
   color: #aaa;
 }
 
-/* Media Queries para adaptarse a pantallas más pequeñas */
-@media (max-width: 768px) {
-  #wrapper {
-      width: 90%; /* Hago la tarjeta un poco más pequeña */
-      max-width: 400px; /* Limito el tamaño máximo */
-      height: auto; /* La altura será automática según el contenido */
-      padding: 15px;
-  }
-
-  .bg-img {
-      width: 100%; /* Reducimos el tamaño de la imagen */
-      height: 300px; /* La altura se ajusta automáticamente */
-      display: block; /* Asegura que el contenedor de la imagen se comporta como bloque */
-      margin-left: auto; /* Centra la imagen horizontalmente */
-      margin-right: auto; /* Centra la imagen horizontalmente */
-      object-position: top;
-      object-fit: cover;
-      border-radius: 100%;
-  }
-
-  header h1 {
-      font-size: 20px; /* Ajusto el tamaño de la fuente */
-  }
-
-  header p {
-      font-size: 14px; /* Ajusto el tamaño de la fuente */
-  }
-
-  .icons a {
-      font-size: 20px; /* Hago los íconos más pequeños */
-  }
-}
-
-@media (max-width: 480px) {
-  #wrapper {
-      width: 70%; /* La tarjeta ocupa casi todo el ancho */
-      max-width: 400px; /* Limito el tamaño máximo a 300px */
-      height: 70%;
-      padding: 15px;
-  }
-
-  .bg-img {
-    width: 100%; /* Se ajusta al 100% del contenedor */
-    height: 280px; /* Fija la altura para que sea consistente */
-    padding-top: 15px;
-    border-radius: 50%;
-  }
-
-  header h1 {
-      font-size: 18px; /* Fuente más pequeña */
-  }
-
-  header p {
-      font-size: 12px; /* Fuente más pequeña */
-  }
-
-  .icons a {
-      font-size: 18px; /* Los íconos también se hacen más pequeños */
-  }
-  #footer {
-    padding-top: 10px;
+/* Escalado dinámico */
+@media (min-width: 1px) {
+  #scalable-container {
+    transform: scale(calc(100vw / 600)); /* Escalado proporcional basado en el ancho de la ventana */
   }
 }
